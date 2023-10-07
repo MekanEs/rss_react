@@ -40,9 +40,13 @@ export const searchRequest = async (
         resObj.items = data.data.results.map((el: responeResultstype) => ({
           name: el.name,
           id: el.url.split('/')[5],
+          imageURL: `https://raw.githubusercontent.com/vieraboschkova/swapi-gallery/main/static/assets/img/people/${
+            el.url.split('/')[5]
+          }.jpg?raw=true`,
           description: [
             `gender: ${el.gender || '--'}`,
             `heigth: ${el.height || '--'}`,
+
             `skin color: ${el.skin_color || '--'}`,
           ],
         }));
@@ -53,5 +57,20 @@ export const searchRequest = async (
     return result;
   } catch (e) {
     return { items: [], total: 0 };
+  }
+};
+export const getImage = async (id: number) => {
+  try {
+    const res = await axios
+      .get(
+        `https://raw.githubusercontent.com/vieraboschkova/swapi-gallery/main/static/assets/img/people/${id}.jpg?raw=true`,
+        {
+          responseType: 'arraybuffer',
+        }
+      )
+      .then((response) => Buffer.from(response.data, 'binary').toString('base64'));
+    return res;
+  } catch (e) {
+    console.log(e);
   }
 };

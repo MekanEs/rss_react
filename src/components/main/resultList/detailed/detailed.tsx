@@ -5,6 +5,7 @@ import { item } from '../../../../pages/main/mainPage';
 import { v4 as uuid } from 'uuid';
 
 type detailedPropstype = { showInfo: boolean; setShowInfo: (val: boolean) => void; el: item };
+
 const Detailed: FC<detailedPropstype> = ({ showInfo, setShowInfo, el }) => {
   return (
     <div className={cx(styles.container, showInfo ? styles.visible : styles.hidden)}>
@@ -15,14 +16,7 @@ const Detailed: FC<detailedPropstype> = ({ showInfo, setShowInfo, el }) => {
         </button>
       </div>
       <div className={styles.imageContainer}>
-        <img
-          className={styles.resImage}
-          src={
-            el?.id &&
-            `https://raw.githubusercontent.com/vieraboschkova/swapi-gallery/main/static/assets/img/people/${el.id}.jpg?raw=true`
-          }
-          alt=""
-        />
+        <img className={styles.resImage} src={el?.imageURL} alt="" />
       </div>
       <div className={styles.description}>
         <h4>Description:</h4>

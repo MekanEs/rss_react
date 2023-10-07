@@ -8,7 +8,7 @@ import Pagination from '../../components/pagination/pagination';
 
 export const SEARCH_VALUE_KEY = 'serch_value';
 export type setSearchValuetype = (e: ChangeEvent<HTMLInputElement>) => void;
-export type item = { name: string; description: string[]; id: string };
+export type item = { name: string; description: string[]; id: string; imageURL: string };
 export type itemsArrtype = item[];
 
 const Main: FC = () => {

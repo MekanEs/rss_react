@@ -20,11 +20,7 @@ const Card: FC<cardPropstype> = ({ setShowInfo, el, setSelected }) => {
     >
       <div>{el.name}</div>
       <div className={styles.imageContainer}>
-        <img
-          className={styles.resImage}
-          src={`https://raw.githubusercontent.com/vieraboschkova/swapi-gallery/main/static/assets/img/people/${el.id}.jpg?raw=true`}
-          alt=""
-        />
+        <img className={styles.resImage} src={el.imageURL} alt="person image" />
       </div>
     </li>
   );
