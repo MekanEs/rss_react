@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+}
+
+.pageBtn {
+  padding: 5px;
+  border: 1px solid #000;
+  border: 5px;
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #747474;
+}
