@@ -3,6 +3,7 @@
   justify-content: center;
   padding: 20px;
   flex: auto;
+  margin-top: 80px;
 }
 
 .list {
@@ -13,19 +14,52 @@
   column-gap: 20px;
   width: 100%;
   margin: 12px;
+  height: fit-content;
+
   li {
     list-style: none;
     padding: 10px;
-    border: 1px solid #1d0404;
+    border: 1px solid #2b2b2b;
     border-radius: 10px;
     margin: 6px;
     width: 250px;
-    height: 200px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
     align-items: center;
-    background-color: #1d0404;
-    color: #7f7f7f;
+    background: linear-gradient(335deg, rgba(18, 18, 18, 0.8) 40%, rgba(0, 0, 0, 0.3) 90%);
+    animation: bg-slide 0.5s linear 0s 1 normal forwards;
+    color: #ffffff;
+    filter: drop-shadow(5px 5px 10px #323232);
+    transition: all 0.5s ease;
+    &:hover {
+      animation: bg-slide-rev 0.5s linear 0s 1 normal forwards;
+      filter: drop-shadow(5px 5px 10px #000000);
+    }
+  }
+}
+
+@keyframes bg-slide {
+  0% {
+    background-position: left bottom;
+    background-size: 100%;
+  }
+
+  100% {
+    background-position: left bottom;
+    background-size: 300%;
+  }
+}
+
+@keyframes bg-slide-rev {
+  0% {
+    background-position: left bottom;
+    background-size: 300%;
+  }
+
+  100% {
+    background-position: left bottom;
+    background-size: 100%;
   }
 }

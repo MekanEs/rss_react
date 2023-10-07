@@ -2,7 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30vh;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  top: 0;
 }
 
 .loader {
