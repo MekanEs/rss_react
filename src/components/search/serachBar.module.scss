@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.searchBar {
+  font-size: 24px;
+  width: 80%;
+
+  input {
+    padding: 5px;
+    width: 80%;
+  }
+
+  button {
+    border: 1px solid #383838;
+    background-color: #360000;
+    padding: 5px;
+    color: aliceblue;
+  }
+}

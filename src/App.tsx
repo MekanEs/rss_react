@@ -1,31 +1,68 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import React, { ChangeEvent } from 'react';
 import './App.css';
+import ResultList from './components/main/resultList/resultList';
+import SearchBar from './components/search/searchBar';
+import { searchRequest } from './API/search';
 
-function App() {
-  const [count, setCount] = useState(0);
+export const SEARCH_VALUE_KEY = 'serch_value';
+export type setSearchValuetype = (e: ChangeEvent<HTMLInputElement>) => void;
+export type itemsArrtype = { name: string; description: string[] }[];
+type appStatetype = { searchValue: string; itemsArr: itemsArrtype; isPending: boolean };
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+class App extends React.Component<object, appStatetype> {
+  constructor(props: object) {
+    super(props);
+    this.state = {
+      searchValue: localStorage.getItem(SEARCH_VALUE_KEY) || '',
+      itemsArr: [],
+      isPending: false,
+    };
+
+    this.setSearchValue = this.setSearchValue.bind(this);
+    this.setIsPending = this.setIsPending.bind(this);
+    this.setItems = this.setItems.bind(this);
+    this.search = this.search.bind(this);
+  }
+
+  setIsPending: (value: boolean) => void = (value) => {
+    this.setState({ ...this.state, isPending: value, searchValue: this.state.searchValue.trim() });
+  };
+
+  setSearchValue: setSearchValuetype = (e) => {
+    this.setState({ ...this.state, searchValue: e.target.value });
+  };
+
+  search: () => void = async () => {
+    this.setIsPending(true);
+    localStorage.setItem(SEARCH_VALUE_KEY, this.state.searchValue);
+    const response = await searchRequest(this.state.searchValue);
+    this.setItems(response);
+  };
+
+  setItems = (arr: itemsArrtype) => {
+    this.setState({
+      ...this.state,
+      itemsArr: arr,
+      isPending: false,
+    });
+  };
+
+  componentDidMount(): void {
+    this.search();
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <SearchBar
+          setSearchValue={this.setSearchValue}
+          searchValue={this.state.searchValue}
+          search={this.search}
+        />
+        <ResultList itemsArr={this.state.itemsArr} isPending={this.state.isPending} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
-  );
+    );
+  }
 }
 
 export default App;
