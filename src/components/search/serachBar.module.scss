@@ -2,21 +2,40 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  background-color: #410808;
 }
 
 .searchBar {
+  display: flex;
   font-size: 24px;
   width: 80%;
+  justify-content: center;
+  column-gap: 5px;
+
+  @media (max-width: 600px) {
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+  }
 
   input {
     padding: 5px;
     width: 80%;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
   }
 
   button {
-    border: 1px solid #383838;
-    background-color: #360000;
-    padding: 5px;
-    color: aliceblue;
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition:
+      color,
+      0.3s ease;
+
+    &:hover {
+      background-color: #800303;
+      color: aliceblue;
+    }
   }
 }
