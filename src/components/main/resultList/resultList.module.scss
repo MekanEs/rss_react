@@ -8,7 +8,9 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  row-gap: 20px;
+  column-gap: 20px;
   width: 100%;
   margin: 12px;
   li {

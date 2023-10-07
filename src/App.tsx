@@ -32,19 +32,19 @@ class App extends React.Component<object, appStatetype> {
     this.setState({ ...this.state, searchValue: e.target.value });
   };
 
-  search: () => void = async () => {
-    this.setIsPending(true);
-    localStorage.setItem(SEARCH_VALUE_KEY, this.state.searchValue);
-    const response = await searchRequest(this.state.searchValue);
-    this.setItems(response);
-  };
-
   setItems = (arr: itemsArrtype) => {
     this.setState({
       ...this.state,
       itemsArr: arr,
       isPending: false,
     });
+  };
+
+  search: () => void = async () => {
+    this.setIsPending(true);
+    localStorage.setItem(SEARCH_VALUE_KEY, this.state.searchValue);
+    const response = await searchRequest(this.state.searchValue);
+    this.setItems(response);
   };
 
   componentDidMount(): void {

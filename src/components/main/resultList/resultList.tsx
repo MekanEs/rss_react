@@ -12,30 +12,29 @@ class ResultList extends React.Component<ResultListPropstype> {
   }
 
   render() {
-    if (this.props.isPending) {
-      return <Loader />;
-    } else {
-      return (
-        <div className={styles.container}>
-          <ul className={styles.list}>
-            {this.props.itemsArr.map((el) => {
-              return (
-                <li key={uuid()}>
-                  <div>{el.name}</div>
-                  <div>
-                    <h3>description:</h3>
+    return this.props.isPending ? (
+      <Loader />
+    ) : (
+      <div className={styles.container}>
+        <ul className={styles.list}>
+          {this.props.itemsArr.map((el) => {
+            return (
+              <li key={uuid()}>
+                <div>{el.name}</div>
+                <div>
+                  <h3>description:</h3>
 
-                    {el.description.map((el) => (
-                      <div key={uuid()}>{el}</div>
-                    ))}
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      );
-    }
+                  {el.description.map((el) => (
+                    <div key={uuid()}>{el}</div>
+                  ))}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
   }
 }
+
 export default ResultList;
