@@ -17,10 +17,19 @@ class ResultList extends React.Component<ResultListPropstype> {
     ) : (
       <div className={styles.container}>
         <ul className={styles.list}>
-          {this.props.itemsArr.map((el) => {
+          {this.props.itemsArr.map((el, index) => {
             return (
               <li key={uuid()}>
                 <div>{el.name}</div>
+                <div className={styles.imageContainer}>
+                  <img
+                    className={styles.resImage}
+                    src={`https://github.com/vieraboschkova/swapi-gallery/blob/main/static/assets/img/people/${
+                      index + 1
+                    }.jpg?raw=true`}
+                    alt=""
+                  />
+                </div>
                 <div>
                   <h3>description:</h3>
 

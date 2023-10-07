@@ -23,43 +23,43 @@
     border-radius: 10px;
     margin: 6px;
     width: 250px;
-    height: 150px;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
     align-items: center;
-    background: linear-gradient(335deg, rgba(18, 18, 18, 0.8) 40%, rgba(0, 0, 0, 0.3) 90%);
-    animation: bg-slide 0.5s linear 0s 1 normal forwards;
+    background: rgba(18, 18, 18, 0.5);
     color: #ffffff;
-    filter: drop-shadow(5px 5px 10px #323232);
+    background-size: 300%;
     transition: all 0.5s ease;
+    -webkit-box-shadow: 10px 10px 8px 0px rgba(71, 71, 71, 0.1);
+    -moz-box-shadow: 10px 10px 8px 0px rgba(71, 71, 71, 0.1);
+    box-shadow: 10px 10px 8px 0px rgba(71, 71, 71, 0.1);
     &:hover {
-      animation: bg-slide-rev 0.5s linear 0s 1 normal forwards;
-      filter: drop-shadow(5px 5px 10px #000000);
+      transform: translateY(-5px);
+      background: rgba(18, 18, 18, 0.8);
+      -webkit-box-shadow: 10px 10px 8px 0px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 10px 10px 8px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 10px 10px 8px 0px rgba(0, 0, 0, 0.5);
     }
   }
 }
 
-@keyframes bg-slide {
-  0% {
-    background-position: left bottom;
-    background-size: 100%;
-  }
-
-  100% {
-    background-position: left bottom;
-    background-size: 300%;
-  }
+.imageContainer {
+  width: 230px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  height: 300px;
 }
 
-@keyframes bg-slide-rev {
-  0% {
-    background-position: left bottom;
-    background-size: 300%;
-  }
+.resImage {
+  width: 230px;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  filter: brightness(0.8);
 
-  100% {
-    background-position: left bottom;
-    background-size: 100%;
+  &:hover {
+    transform: scale(1.2);
+    filter: brightness(1);
   }
 }
