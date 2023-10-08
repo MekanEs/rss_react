@@ -8,6 +8,6 @@
   background: url(https://lumiere-a.akamaihd.net/v1/images/image_1921b77b.jpeg), no-repeat;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: 200%;
+  background-size: cover;
   align-items: center;
 }
